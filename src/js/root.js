@@ -20,7 +20,6 @@ export default class Root extends  React.Component{
             <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
             <Route path="/usercenter" component={PCUserCenter}></Route>
             </Router>
-
           </MediaQuery>
           <MediaQuery query='(max-device-width: 1224px)'>
           <Router history={hashHistory}>
