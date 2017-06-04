@@ -84,7 +84,11 @@ class PCHeader extends React.Component {
     this.setState({current:e.key});
   };
   logout(){
-		this.setModalVisible(true);
+
+    localStorage.userid = '';
+    localStorage.userNickName = '';
+    this.setState({hasLogined:false});
+		//this.setModalVisible(true);
 	};
   render(){
     const {getFieldDecorator} = this.props.form;

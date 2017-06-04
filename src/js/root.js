@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router,Route,hashHistory} from 'react-router';
 import { Button } from 'antd';
 import PCIndex from './components/pc_index';
+import ReduxIndex from './components/redux.js'
 import PCNewsDetails from './components/pc_news_details';
 import MobileIndex from './components/mobile_index';
 import MobileNewsDetails from './components/mobile_news_details';
@@ -19,6 +20,7 @@ export default class Root extends  React.Component{
             <Route path="/" component={PCIndex}></Route>
             <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
             <Route path="/usercenter" component={PCUserCenter}></Route>
+
             </Router>
           </MediaQuery>
           <MediaQuery query='(max-device-width: 1224px)'>
