@@ -1,0 +1,2 @@
+import {getDb} from '../../../db';import {subscriptions} from '../../../db/schema';import {eq} from 'drizzle-orm';
+export async function POST(req:Request){if(req.headers.get('origin')!==new URL(req.url).origin)return Response.json({error:'无效请求'},{status:403});const {token}=await req.json() as {token?:string};if(!token)return Response.json({error:'链接无效'},{status:400});await getDb().delete(subscriptions).where(eq(subscriptions.token,token));return Response.json({ok:true});}
