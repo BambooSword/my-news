@@ -1,0 +1,3 @@
+import {getDb} from '../../../db';import {subscriptions} from '../../../db/schema';import {eq} from 'drizzle-orm';
+export const dynamic='force-dynamic';
+export default async function Page({searchParams}:{searchParams:Promise<{token?:string}>}){const {token}=await searchParams;const rows=token?await getDb().select().from(subscriptions).where(eq(subscriptions.token,token)):[];if(rows.length)await getDb().update(subscriptions).set({confirmed:1}).where(eq(subscriptions.id,rows[0].id));return <main className="status-page"><h1>{rows.length?'订阅已确认':'确认链接无效'}</h1><p>{rows.length?'你已加入知简每日简报。':'请重新提交订阅，或联系站点维护者。'}</p><a href="/">返回首页 →</a></main>;}
